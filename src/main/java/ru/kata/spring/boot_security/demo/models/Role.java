@@ -9,10 +9,11 @@ import java.util.Set;
 @Table(name = "role")
 public class Role implements GrantedAuthority {
     @Id
+    @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "roles")
+    @Column(name = "role_name")
     private String name;
 
     @ManyToMany(mappedBy = "roles")
@@ -56,6 +57,6 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return getName();
+        return name;
     }
 }
